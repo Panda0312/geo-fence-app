@@ -62,3 +62,17 @@ To learn React, check out the [React documentation](https://reactjs.org/).
    npx husky add .husky/pre-commit "npx lint-staged"
 4. prettier install: npm install --save-dev --save-exact prettier
 5. npm i -D @craco/craco
+
+## 说明
+
+应用包含 Map,List 页面,围栏数据存储于浏览器 localStorage,使用 google map api
+实现功能：
+
+1. 在地图上添加围栏，鼠标操作请查看菜单栏 Instruction 部分。
+2. 围栏可编辑，删除。
+3. 围栏列表数据展示，列表数据可删除，查询
+
+## 主要技术框架使用
+
+react, jotai(状态管理), @react-google-maps/api(谷歌地图 api 组件)
+antd(Ant Design 组件库), 其他详见 package.json 文件
