@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/geo-fence-app/static/css/main.dd1ea7b7.css",
-    "main.js": "/geo-fence-app/static/js/main.f27f5835.js",
+    "main.js": "/geo-fence-app/static/js/main.7425e954.js",
     "index.html": "/geo-fence-app/index.html",
     "main.dd1ea7b7.css.map": "/geo-fence-app/static/css/main.dd1ea7b7.css.map",
-    "main.f27f5835.js.map": "/geo-fence-app/static/js/main.f27f5835.js.map"
+    "main.7425e954.js.map": "/geo-fence-app/static/js/main.7425e954.js.map"
   },
   "entrypoints": [
     "static/css/main.dd1ea7b7.css",
-    "static/js/main.f27f5835.js"
+    "static/js/main.7425e954.js"
   ]
 }
