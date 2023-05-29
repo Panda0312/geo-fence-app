@@ -1,5 +1,4 @@
-import { Button, Input, Row } from "antd";
-import Table, { ColumnsType } from "antd/es/table";
+import { Button, Input, Row, Table, TableColumnsType } from "antd";
 import { useAtom } from "jotai";
 import { useMemo, useState } from "react";
 
@@ -20,7 +19,7 @@ type TDataType = TFence & {
   key: React.Key;
 };
 
-const columns: ColumnsType<TDataType> = [
+const columns: TableColumnsType<TDataType> = [
   {
     title: "Name",
     dataIndex: "name",
