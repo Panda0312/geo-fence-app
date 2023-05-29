@@ -11,6 +11,7 @@ export type TPaths = {
 export type TFence = {
   name: string;
   paths: TPaths;
+  createAt: number;
   lineColor: string;
   fillColor: string;
 };

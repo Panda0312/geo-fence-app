@@ -44,3 +44,21 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Run project
+
+1. clone project
+2. npm install
+3. npm start
+
+## Init Setup Project Steps:
+
+1. eslint setup: npm init @eslint/config
+2. lint-staged install: npm install --save-dev lint-staged
+3. husky setup:
+   npm install husky -D
+   npm pkg set scripts.prepare="husky install"
+   npm run prepare
+   npx husky add .husky/pre-commit "npx lint-staged"
+4. prettier install: npm install --save-dev --save-exact prettier
+5. npm i -D @craco/craco

@@ -1,4 +1,4 @@
-import { Button, ColorPicker, Input, Row } from "antd";
+import { Button, Col, ColorPicker, Input, Row, Space } from "antd";
 import SHA256 from "crypto-js/sha256";
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
@@ -11,6 +11,7 @@ import {
   savedFences,
   showFenceConfig,
 } from "@/store";
+import { FENCE_STORAGE_KEY } from "@/store/constant";
 
 import { FenceConfigWrapper } from "./styled";
 
@@ -31,20 +32,26 @@ export const FenceConfig = () => {
   };
 
   const saveFence = () => {
-    setSavdFences(fences => {
-      const map = new Map(fences);
-      const curFence = {
-        paths: pendingPaths,
-        lineColor,
-        fillColor,
-        name: fenceName,
-      };
-      const hash = SHA256(JSON.stringify(curFence)).toString();
-      map.set(hash, curFence);
-      return map;
-    });
-    setPendingPaths([]);
-    setMovingPoint(null);
+    if (pendingPaths.length > 2) {
+      setSavdFences(fences => {
+        const map = new Map(fences);
+        const curFence = {
+          paths: pendingPaths,
+          lineColor,
+          fillColor,
+          name: fenceName,
+          createAt: new Date().getTime(),
+        };
+        const hash = SHA256(JSON.stringify(curFence)).toString();
+        map.set(hash, curFence);
+        localStorage.setItem(
+          FENCE_STORAGE_KEY,
+          JSON.stringify(Array.from(map))
+        );
+        return map;
+      });
+    }
+    cancelDrawing();
   };
 
   return (
@@ -59,27 +66,37 @@ export const FenceConfig = () => {
         />
       </Row>
       <Row>
-        <label>line color:</label>
-        <ColorPicker
-          value={lineColor}
-          onChange={value => {
-            setLineColor(value.toHexString());
-          }}
-        />
+        <Col span={10} className="label">
+          line color:
+        </Col>
+        <Col span={8}>
+          <ColorPicker
+            value={lineColor}
+            onChange={value => {
+              setLineColor(value.toHexString());
+            }}
+          />
+        </Col>
       </Row>
       <Row>
-        <label>fill color:</label>
-        <ColorPicker
-          value={fillColor}
-          onChange={value => {
-            setFillColor(value.toHexString());
-          }}
-        />
+        <Col span={10} className="label">
+          fill color:
+        </Col>
+        <Col span={8}>
+          <ColorPicker
+            value={fillColor}
+            onChange={value => {
+              setFillColor(value.toHexString());
+            }}
+          />
+        </Col>
       </Row>
-      <Row>
+      <Space>
         <Button onClick={cancelDrawing}>Cancel</Button>
-        <Button onClick={saveFence}>Complete</Button>
-      </Row>
+        <Button type="primary" onClick={saveFence}>
+          Complete
+        </Button>
+      </Space>
     </FenceConfigWrapper>
   );
 };
