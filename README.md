@@ -65,6 +65,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## 说明
 
+测试地址：https://panda0312.github.io/geo-fence-app
+
 应用包含 Map,List 页面,围栏数据存储于浏览器 localStorage,使用 google map api
 实现功能：
 
